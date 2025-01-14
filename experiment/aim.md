@@ -1,2 +1,2 @@
 
-####  To plot the radiation pattern and determining gain of a pyramidal horn antenna.
+####  To plot the Radiation Pattern and Determine the Gain of a Pyramidal Horn Antenna.
