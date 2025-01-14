@@ -1,6 +1,6 @@
 var rightconnection=false;
 var datapoints1 = [];
-var d=0
+var d=0;var knobFlag=false;
 jsPlumb.ready(function () {
 
     var instance,
@@ -225,8 +225,8 @@ document.getElementById("check11").addEventListener("click", async function () {
                   container: 'position-absolute',
                   popup:"swal2-popup"
                 },
-                title:"Good Job",      
-                text:"Correct Connection",
+                title:"Correct Connection!!",      
+                text:"Connection established",
                 icon:'success',
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -249,6 +249,9 @@ document.getElementById("check11").addEventListener("click", async function () {
                         text:"Gain for 90 to 270 degree for Horn Antenna is zero.",
             
                     });}
+                    knobFlag=true;
+                    document.getElementById('jog_dial_one').style.cursor='pointer';
+                    document.getElementById('jog_dial_two').style.cursor='pointer';
                 })
             
          document.getElementById("cch").disabled= false;
@@ -335,7 +338,7 @@ document.getElementById("check11").addEventListener("click", async function () {
                       container: 'position-absolute',
                       popup:"swal2-popup"
                     },
-                    title:'Components not placed properly.',
+                    title:'The components are not placed properly.',
                     html:'Click on <b style="color:blue;">Reset</b> button and try it again.',     
                     icon:'error',
                     });

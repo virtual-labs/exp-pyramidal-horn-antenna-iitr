@@ -389,7 +389,7 @@
                   container: 'position-absolute',
                   popup:"swal2-popup"
                 },   
-                title:'Oops..',  
+                title:'Wrong Input!!',  
                 text:"Enter Correct Value.",
                 icon:'error',
                 });
@@ -721,7 +721,7 @@
                           container: 'position-absolute',
                           popup:"swal2-popup"
                         },
-                        html:'Incorrect component placement. Click the <b>Experiment setup</b> button to view the setup.',
+                        html:'Incorrect component placement. Please click the <b>\'Experiment setup\'</b> button to view the setup.',
                         title:'Please try again!!',     
                         icon:'error',
                         });
@@ -841,8 +841,8 @@ return;
         <td>
 
           <div id="exph">
-            <h2 id="expm"> To plot the Radiation Pattern of a Pyramidal Horn Antenna. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              <button  ondblclick="hide()" onclick="hov()"
+            <h2 id="expm"> Horn Antenna &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              <button  style="font-family: 'Times New Roman', Times, serif;" ondblclick="hide()" onclick="hov()"
                 id="help">INSTRUCTIONS</button> </h2>
 
           </div>
@@ -900,18 +900,19 @@ return;
                   Note down all the readings for anticlockwise direction (0 to 90 degree) as well as for clockwise
                   direction (360 to 270 degree).
                 </div>
-                <div class="carousel-item ">
 
-                  Click on "Print" button to get your page (readings and connections) in a PDF form.
-                </div>
                 <div class="carousel-item ">
-
                   Click on "Plot" button to plot a graph as per your readings.
                 </div>
-                <div class="carousel-item ">
 
+                <div class="carousel-item ">
                   If you want to save the graph click on the camera icon just above the graph.
                 </div>
+
+                <div class="carousel-item ">
+                  Click on "Print" button to get your page (readings and connections) in a PDF form.
+                </div>
+               
 
               </div>
               <a class="carousel-control-prev" href="#carouselContent" role="button" data-slide="prev">
@@ -996,7 +997,7 @@ return;
 
             <tr>
               <td>
-                Transmitting voltage:
+                Transmitting Voltage:
 
               </td>
               <td id="Trans">
@@ -1025,8 +1026,8 @@ return;
 
             </tr>
             <tr>
-              <td>
-                20log10(Vr/Vt) =
+              <td style="text-align: end;">
+                20log<sub>10</sub>(V<sub>r</sub> / V<sub>t</sub>) =
               </td>
               <td id="coupling">
 
@@ -1037,7 +1038,7 @@ return;
             </tr>
             <tr>
               <td style="padding-top: 10px; padding-left: 55px;">
-                <button onclick="calculate()">Calculate</button>
+                <button id="cal" onclick="calculate()">Calculate</button>
               </td>
 
             </tr>

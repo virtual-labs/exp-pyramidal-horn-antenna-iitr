@@ -18,26 +18,35 @@ C   Beam width
 D   None of these  
 <br>
 
-Q3. A \_\_\_\_\_\_\_\_\_\_ is a device that converts a guided electromagnetic wave on a transmission line into a plane wave propagating in free space.<br>
-  
-<b>A   Transmitting antenna</b>    
-B   Receiving antenna  
-C   Radar  
-D   Mixer    
+Q3. _____ of an antenna is a measure of how the antenna concentrates its radiated power in a given direction.<br>
+
+A   Efficiency  
+<b>B   Power</b>  
+C   Gain   
+D   Polarization  
 <br>
 
-Q4. If an antenna has a directivity of 16 and radiation efficiency of 0.9, then the gain of the antenna is:<br>
+
+Q4. An antenna when radiating, has a highly directional radiation pattern. When the antenna is receiving its radiation pattern
+<br>
+
+A   Is more directive   
+B   Is less directive   
+<b>C   Is the same</b>  
+D   Exhibits no directivity all  
+<br> 
+
+
+
+Q5. If an antenna has a directivity of 16 and radiation efficiency of 0.9, then the gain of the antenna is:<br>
  
-<b>A   16.2</b>  
+<b>A   14.4</b>  
 B   14.8  
-C   12.5    
+C   17.8    
 D   19.3  
 <br>
 
-Q5. Gain of an antenna is always greater than the directivity of the antenna.<br>
-
-A   True    
-<b>B   False</b>    
+ 
 
 
 

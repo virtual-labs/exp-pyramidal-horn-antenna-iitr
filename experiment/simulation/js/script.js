@@ -29,7 +29,7 @@ function addValue() {
     // GET THE CELLS COLLECTION OF THE CURRENT ROW.
     var objCells = myTab.rows.item(i).cells;
 
-    // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+    // LOOP THROUGH EACH CELL OF THE CURRENT ROW TO READ CELL VALUES.
 
 
     xValue.push(objCells.item(0).innerHTML);
@@ -63,7 +63,7 @@ function makePlot() {
         container: 'position-absolute',
         popup:"swal2-popup"
       },
-      html:'First take down all the values for Clockwise and Anticlockwise direction and then click on <b style="color:blue;">Print</b> button.',     
+      html:'First take down all the values for Clockwise and Anticlockwise direction and then click on <b style="color:blue;">Plot</b> button.',     
       icon:'info',
       });
 
@@ -104,7 +104,7 @@ function makePlot() {
     ]
 
     var layout = {
-      title: "Radiation Pattern Of Horn Antenna",
+      title: "Radiation Pattern of Horn Antenna",
       font: {
         size: 15
       },
