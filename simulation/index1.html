@@ -1,0 +1,1473 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/knockout-2.2.1.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="js/sevenSeg.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/jquery.knob.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+  <script src="js/script.js"></script>
+  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+  <!-- Resources -->
+  <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+
+  <!-- Chart code -->
+  <script>
+    var d = 60
+
+    am4core.ready(function () {
+
+      // Themes begin
+      am4core.useTheme(am4themes_animated);
+      // Themes end
+
+      // create chart
+      var chart = am4core.create("chartdiv", am4charts.GaugeChart);
+      chart.hiddenState.properties.opacity = 0;
+
+      var axis = chart.xAxes.push(new am4charts.ValueAxis());
+
+      axis.strictMinMax = false
+      axis.renderer.inside = true;
+      //axis.renderer.ticks.template.inside = true;
+      //axis.stroke = chart.colors.getIndex(3);
+      axis.renderer.radius = am4core.percent(120);
+      //axis.renderer.radius = 80;
+      axis.renderer.line.strokeOpacity = 1;
+      axis.renderer.line.strokeWidth = 1;
+      axis.renderer.line.stroke = chart.colors.getIndex(0);
+      axis.renderer.ticks.template.disabled = true
+      axis.renderer.ticks.template.stroke = chart.colors.getIndex(0);
+      axis.renderer.labels.template.radius = 2;
+      axis.renderer.ticks.template.strokeOpacity = 1;
+      axis.renderer.grid.template.disabled = true;
+      axis.renderer.ticks.template.length = 10;
+      axis.hiddenState.properties.opacity = 1;
+      axis.hiddenState.properties.visible = true;
+      axis.setStateOnChildren = true;
+      axis.renderer.hiddenState.properties.endAngle = 180;
+
+
+      var axis3 = chart.xAxes.push(new am4charts.ValueAxis());
+
+      axis3.strictMinMax = false;
+      axis3.renderer.inside = true;
+      //axis.renderer.ticks.template.inside = true;
+      //axis.stroke = chart.colors.getIndex(3);
+      axis3.renderer.radius = am4core.percent(110);
+      //axis.renderer.radius = 80;
+      axis3.renderer.line.strokeOpacity = 1;
+      axis3.renderer.line.strokeWidth = 1;
+      axis3.renderer.line.stroke = chart.colors.getIndex(0);
+      axis3.renderer.ticks.template.disabled = false
+      axis3.renderer.ticks.template.stroke = chart.colors.getIndex(0);
+      axis3.renderer.labels.template.radius = 2;
+      axis3.renderer.ticks.template.strokeOpacity = 1;
+      axis3.renderer.grid.template.disabled = true;
+      axis3.renderer.ticks.template.length = 10;
+      axis3.hiddenState.properties.opacity = 1;
+      axis3.hiddenState.properties.visible = true;
+      axis3.setStateOnChildren = true;
+      axis3.renderer.hiddenState.properties.endAngle = 180;
+
+      var axis2 = chart.xAxes.push(new am4charts.ValueAxis());
+      axis2.min = 0;
+      axis2.max = 500;
+
+      axis2.strictMinMax = true;
+
+      axis2.renderer.radius = am4core.percent(120);
+      axis2.renderer.line.strokeOpacity = 1;
+      axis2.renderer.line.strokeWidth = 1;
+      axis2.renderer.line.stroke = chart.colors.getIndex(1);
+      axis2.renderer.ticks.template.stroke = chart.colors.getIndex(1);
+      axis2.renderer.labels.template.stroke = chart.colors.getIndex(1);
+      axis2.renderer.labels.template.radius = 2;
+      axis2.renderer.labels.template.fontSize = 8;
+      axis2.renderer.labels.template.strokeWidth = 0.3;
+      axis2.renderer.minGridDistance = 50;
+
+      axis2.renderer.ticks.template.disabled = false
+      axis2.renderer.ticks.template.strokeOpacity = 1;
+      axis2.renderer.grid.template.disabled = true;
+      axis2.renderer.ticks.template.length = 3;
+      axis2.hiddenState.properties.opacity = 1;
+      axis2.hiddenState.properties.visible = true;
+      axis2.setStateOnChildren = true;
+      axis2.renderer.hiddenState.properties.endAngle = 180;
+
+
+
+      var hand2 = chart.hands.push(new am4charts.ClockHand());
+      hand2.fill = axis2.renderer.line.stroke;
+      hand2.stroke = axis2.renderer.line.stroke;
+      hand2.axis = axis2;
+      hand2.pin.radius = 1;
+      hand2.startWidth = 1;
+
+
+
+
+
+
+      setInterval(function () {
+
+        hand2.showValue(d, 1, am4core.ease.cubicOut);
+
+      }, 1000);
+
+
+
+
+    });  // end am4core.ready()
+  </script>
+  <script>
+    D = 0
+    function incrementValue() {
+
+
+      var currentVal = document.getElementById("field").innerText
+      if (currentVal == 270) {
+        document.getElementById("field").innerText = 280
+        D = 21
+        document.getElementById("div280").style.visibility = "visible"
+        document.getElementById("div280").style.display = "block"
+        document.getElementById("div280").style.opacity = "1"
+        document.getElementById("div270").style.visibility = "hidden"
+        document.getElementById("div270").style.display = "none"
+        document.getElementById("div270").style.opacity = "0"
+
+      } if (currentVal == 280) {
+        document.getElementById("field").innerText = 290
+        D = 61
+        document.getElementById("div290").style.visibility = "visible"
+        document.getElementById("div290").style.display = "block"
+        document.getElementById("div290").style.opacity = "1"
+        document.getElementById("div280").style.visibility = "hidden"
+        document.getElementById("div280").style.display = "none"
+        document.getElementById("div280").style.opacity = "0"
+      } if (currentVal == 290) {
+        document.getElementById("field").innerText = 300
+        D = 41
+        document.getElementById("div300").style.visibility = "visible"
+        document.getElementById("div300").style.display = "block"
+        document.getElementById("div300").style.opacity = "1"
+        document.getElementById("div290").style.visibility = "hidden"
+        document.getElementById("div290").style.display = "none"
+        document.getElementById("div290").style.opacity = "0"
+      } if (currentVal == 300) {
+        document.getElementById("field").innerText = 310
+        var D = 26
+        document.getElementById("div310").style.visibility = "visible"
+        document.getElementById("div310").style.display = "block"
+        document.getElementById("div310").style.opacity = "1"
+        document.getElementById("div300").style.visibility = "hidden"
+        document.getElementById("div300").style.display = "none"
+        document.getElementById("div300").style.opacity = "0"
+      } if (currentVal == 310) {
+        document.getElementById("field").innerText = 320
+        var D = 16
+        document.getElementById("div320").style.visibility = "visible"
+        document.getElementById("div320").style.display = "block"
+        document.getElementById("div320").style.opacity = "1"
+        document.getElementById("div310").style.visibility = "hidden"
+        document.getElementById("div310").style.display = "none"
+        document.getElementById("div310").style.opacity = "0"
+      } if (currentVal == 320) {
+        document.getElementById("field").innerText = 330
+        var D = 21
+        document.getElementById("div330").style.visibility = "visible"
+        document.getElementById("div330").style.display = "block"
+        document.getElementById("div330").style.opacity = "1"
+        document.getElementById("div320").style.visibility = "hidden"
+        document.getElementById("div320").style.display = "none"
+        document.getElementById("div320").style.opacity = "0"
+      } if (currentVal == 330) {
+        document.getElementById("field").innerText = 340
+        var D = 41
+        document.getElementById("div340").style.visibility = "visible"
+        document.getElementById("div340").style.display = "block"
+        document.getElementById("div340").style.opacity = "1"
+        document.getElementById("div330").style.visibility = "hidden"
+        document.getElementById("div330").style.display = "none"
+        document.getElementById("div330").style.opacity = "0"
+      } if (currentVal == 340) {
+        document.getElementById("field").innerText = 350
+        var D = 56
+        document.getElementById("div350").style.visibility = "visible"
+        document.getElementById("div350").style.display = "block"
+        document.getElementById("div350").style.opacity = "1"
+        document.getElementById("div340").style.visibility = "hidden"
+        document.getElementById("div340").style.display = "none"
+        document.getElementById("div340").style.opacity = "0"
+      } if (currentVal == 350) {
+        document.getElementById("field").innerText = 360
+        var D = 61
+        document.getElementById("div360").style.visibility = "visible"
+        document.getElementById("div360").style.display = "block"
+        document.getElementById("div360").style.opacity = "1"
+        document.getElementById("div350").style.visibility = "hidden"
+        document.getElementById("div350").style.display = "none"
+        document.getElementById("div350").style.opacity = "0"
+      }
+      if (currentVal == 360) {
+        document.getElementById("field").innerText = 0
+        var D = 60
+        document.getElementById("div6").style.visibility = "visible"
+        document.getElementById("div6").style.display = "block"
+        document.getElementById("div6").style.opacity = "1"
+        document.getElementById("div360").style.visibility = "hidden"
+        document.getElementById("div360").style.display = "none"
+        document.getElementById("div360").style.opacity = "0"
+      }
+      if (currentVal == 0) {
+        Swal.fire({
+                backdrop:false,
+               target: '#rom',
+               position:'center',
+               width:'480px',
+                customClass: {
+                  container: 'position-absolute',
+                  popup:"swal2-popup"
+                },     
+                text:"Click on '+' button and record all the values till 90 degree.",
+                icon:'info',
+                });
+
+        document.getElementById("field").innerText = 10
+        D = 55
+        document.getElementById("div110").style.visibility = "visible"
+        document.getElementById("div110").style.display = "block"
+        document.getElementById("div110").style.opacity = "1"
+        document.getElementById("div6").style.visibility = "hidden"
+        document.getElementById("div6").style.display = "none"
+        document.getElementById("div6").style.opacity = "0"
+      }
+      if (currentVal == 10) {
+        document.getElementById("field").innerText = 20
+        D = 40
+        document.getElementById("div120").style.visibility = "visible"
+        document.getElementById("div120").style.display = "block"
+        document.getElementById("div120").style.opacity = "1"
+        document.getElementById("div110").style.visibility = "hidden"
+        document.getElementById("div110").style.display = "none"
+        document.getElementById("div110").style.opacity = "0"
+      }
+      if (currentVal == 20) {
+        document.getElementById("field").innerText = 30
+        D = 20
+        document.getElementById("div130").style.visibility = "visible"
+        document.getElementById("div130").style.display = "block"
+        document.getElementById("div130").style.opacity = "1"
+        document.getElementById("div120").style.visibility = "hidden"
+        document.getElementById("div120").style.display = "none"
+        document.getElementById("div120").style.opacity = "0"
+      }
+      if (currentVal == 30) {
+        document.getElementById("field").innerText = 40
+        D = 15
+        document.getElementById("div140").style.visibility = "visible"
+        document.getElementById("div140").style.display = "block"
+        document.getElementById("div140").style.opacity = "1"
+        document.getElementById("div130").style.visibility = "hidden"
+        document.getElementById("div130").style.display = "none"
+        document.getElementById("div130").style.opacity = "0"
+      }
+      if (currentVal == 40) {
+        document.getElementById("field").innerText = 50
+        D = 25
+        document.getElementById("div150").style.visibility = "visible"
+        document.getElementById("div150").style.display = "block"
+        document.getElementById("div150").style.opacity = "1"
+        document.getElementById("div140").style.visibility = "hidden"
+        document.getElementById("div140").style.display = "none"
+        document.getElementById("div140").style.opacity = "0"
+      }
+      if (currentVal == 50) {
+        document.getElementById("field").innerText = 60
+        D = 40
+        document.getElementById("div160").style.visibility = "visible"
+        document.getElementById("div160").style.display = "block"
+        document.getElementById("div160").style.opacity = "1"
+        document.getElementById("div150").style.visibility = "hidden"
+        document.getElementById("div150").style.display = "none"
+        document.getElementById("div150").style.opacity = "0"
+      }
+      if (currentVal == 60) {
+        document.getElementById("field").innerText = 70
+        D = 60
+        document.getElementById("div170").style.visibility = "visible"
+        document.getElementById("div170").style.display = "block"
+        document.getElementById("div170").style.opacity = "1"
+        document.getElementById("div160").style.visibility = "hidden"
+        document.getElementById("div160").style.display = "none"
+        document.getElementById("div160").style.opacity = "0"
+      }
+      if (currentVal == 70) {
+        document.getElementById("field").innerText = 80
+        D = 20
+        document.getElementById("div180").style.visibility = "visible"
+        document.getElementById("div180").style.display = "block"
+        document.getElementById("div180").style.opacity = "1"
+        document.getElementById("div170").style.visibility = "hidden"
+        document.getElementById("div170").style.display = "none"
+        document.getElementById("div170").style.opacity = "0"
+      }
+      if (currentVal == 80) {
+        document.getElementById("field").innerText = 90
+        D = 10
+        document.getElementById("div190").style.visibility = "visible"
+        document.getElementById("div190").style.display = "block"
+        document.getElementById("div190").style.opacity = "1"
+        document.getElementById("div180").style.visibility = "hidden"
+        document.getElementById("div180").style.display = "none"
+        document.getElementById("div180").style.opacity = "0"
+      }
+      if (currentVal == 90) {
+        D = 10
+        Swal.fire({
+                backdrop:false,
+               target: '#rom',
+               position:'center',
+               width:'480px',
+                customClass: {
+                  container: 'position-absolute',
+                  popup:"swal2-popup"
+                },     
+                html:"You've taken all necessary readings for anticlockwise directions.<br> Now click on '-' button and take it to 0.",
+                icon:'info',
+                });
+           }
+      document.getElementById("volt").innerHTML = D + "mV"
+      d = D
+    }
+    function calculate() {
+
+      var vv2 = localStorage.getItem("V2")
+      var current = document.getElementById('V4').value
+      var vv3 = document.getElementById('field').innerHTML;
+      
+      console.log(current);
+      if(current=="" || current==" ")
+      {
+        Swal.fire({
+                backdrop:false,
+               target: '#rom',
+               position:'center',
+               width:'480px',
+                customClass: {
+                  container: 'position-absolute',
+                  popup:"swal2-popup"
+                },   
+                title:'Missing!',  
+                text:"First enter receiving voltage value.",
+                icon:'error',
+                });
+      }
+      else if (vv3 == 0 && current == 60 || vv3 == 10 && current == 55 || vv3 == 20 && current == 40 || vv3 == 30 && current == 20 || vv3 == 40 && current == 15 || vv3 == 50 && current == 25 || vv3 == 60 && current == 40 || vv3 == 70 && current == 60 || vv3 == 80 && current == 20 || vv3 == 90 && current == 10 || vv3 == 360 && current == 61 || vv3 == 350 && current == 56 || vv3 == 340 && current == 41 || vv3 == 330 && current == 21 || vv3 == 320 && current == 16 || vv3 == 310 && current == 26 || vv3 == 300 && current == 41 || vv3 == 290 && current == 61 || vv3 == 280 && current == 21 || vv3 == 270 && current == 11) {
+        document.getElementById("coupling").innerText = (20 * (Math.log10((current / vv2)))).toFixed(2);
+      }
+
+      else {
+        Swal.fire({
+                backdrop:false,
+               target: '#rom',
+               position:'center',
+               width:'480px',
+                customClass: {
+                  container: 'position-absolute',
+                  popup:"swal2-popup"
+                },   
+                title:'Wrong Input!!',  
+                text:"Enter Correct Value.",
+                icon:'error',
+                });
+      }
+    }
+
+    function decrementValue() {
+
+
+
+
+      var currentVal = document.getElementById("field").innerText
+      if (currentVal == 90) {
+        document.getElementById("field").innerText = 80
+        D = 20
+        document.getElementById("div180").style.visibility = "visible"
+        document.getElementById("div180").style.display = "block"
+        document.getElementById("div180").style.opacity = "1"
+        document.getElementById("div190").style.visibility = "hidden"
+        document.getElementById("div190").style.display = "none"
+        document.getElementById("div190").style.opacity = "0"
+
+      } if (currentVal == 80) {
+        document.getElementById("field").innerText = 70
+        var D = 60
+        document.getElementById("div170").style.visibility = "visible"
+        document.getElementById("div170").style.display = "block"
+        document.getElementById("div170").style.opacity = "1"
+        document.getElementById("div180").style.visibility = "hidden"
+        document.getElementById("div180").style.display = "none"
+        document.getElementById("div180").style.opacity = "0"
+      } if (currentVal == 70) {
+        document.getElementById("field").innerText = 60
+        var D = 40
+        document.getElementById("div160").style.visibility = "visible"
+        document.getElementById("div160").style.display = "block"
+        document.getElementById("div160").style.opacity = "1"
+        document.getElementById("div170").style.visibility = "hidden"
+        document.getElementById("div170").style.display = "none"
+        document.getElementById("div170").style.opacity = "0"
+      } if (currentVal == 60) {
+        document.getElementById("field").innerText = 50
+        var D = 25
+        document.getElementById("div150").style.visibility = "visible"
+        document.getElementById("div150").style.display = "block"
+        document.getElementById("div150").style.opacity = "1"
+        document.getElementById("div160").style.visibility = "hidden"
+        document.getElementById("div160").style.display = "none"
+        document.getElementById("div160").style.opacity = "0"
+      } if (currentVal == 50) {
+        document.getElementById("field").innerText = 40
+        var D = 15
+        document.getElementById("div140").style.visibility = "visible"
+        document.getElementById("div140").style.display = "block"
+        document.getElementById("div140").style.opacity = "1"
+        document.getElementById("div150").style.visibility = "hidden"
+        document.getElementById("div150").style.display = "none"
+        document.getElementById("div150").style.opacity = "0"
+      } if (currentVal == 40) {
+        document.getElementById("field").innerText = 30
+        var D = 20
+        document.getElementById("div130").style.visibility = "visible"
+        document.getElementById("div130").style.display = "block"
+        document.getElementById("div130").style.opacity = "1"
+        document.getElementById("div140").style.visibility = "hidden"
+        document.getElementById("div140").style.display = "none"
+        document.getElementById("div140").style.opacity = "0"
+      } if (currentVal == 30) {
+        document.getElementById("field").innerText = 20
+        var D = 40
+        document.getElementById("div120").style.visibility = "visible"
+        document.getElementById("div120").style.display = "block"
+        document.getElementById("div120").style.opacity = "1"
+        document.getElementById("div130").style.visibility = "hidden"
+        document.getElementById("div130").style.display = "none"
+        document.getElementById("div130").style.opacity = "0"
+      } if (currentVal == 20) {
+        document.getElementById("field").innerText = 10
+        var D = 55
+        document.getElementById("div110").style.visibility = "visible"
+        document.getElementById("div110").style.display = "block"
+        document.getElementById("div110").style.opacity = "1"
+        document.getElementById("div120").style.visibility = "hidden"
+        document.getElementById("div120").style.display = "none"
+        document.getElementById("div120").style.opacity = "0"
+      } if (currentVal == 10) {
+        document.getElementById("field").innerText = 0
+        var D = 60
+        document.getElementById("div6").style.visibility = "visible"
+        document.getElementById("div6").style.display = "block"
+        document.getElementById("div6").style.opacity = "1"
+        document.getElementById("div110").style.visibility = "hidden"
+        document.getElementById("div110").style.display = "none"
+        document.getElementById("div110").style.opacity = "0"
+      }
+      if (currentVal == 0) {
+        Swal.fire({
+                backdrop:false,
+               target: '#rom',
+               position:'center',
+               width:'480px',
+                customClass: {
+                  container: 'position-absolute',
+                  popup:"swal2-popup"
+                },   
+                text:"Click on '-' button and record all the values till 270 degree.",
+                icon:'info',
+                });
+      
+        document.getElementById("field").innerText = 360
+        var D = 61
+        document.getElementById("div360").style.visibility = "visible"
+        document.getElementById("div360").style.display = "block"
+        document.getElementById("div360").style.opacity = "1"
+        document.getElementById("div6").style.visibility = "hidden"
+        document.getElementById("div6").style.display = "none"
+        document.getElementById("div6").style.opacity = "0"
+      }
+      if (currentVal == 360) {
+        document.getElementById("field").innerText = 350
+        var D = 56
+        document.getElementById("div350").style.visibility = "visible"
+        document.getElementById("div350").style.display = "block"
+        document.getElementById("div350").style.opacity = "1"
+        document.getElementById("div360").style.visibility = "hidden"
+        document.getElementById("div360").style.display = "none"
+        document.getElementById("div360").style.opacity = "0"
+      }
+      if (currentVal == 350) {
+        document.getElementById("field").innerText = 340
+        var D = 41
+        document.getElementById("div340").style.visibility = "visible"
+        document.getElementById("div340").style.display = "block"
+        document.getElementById("div340").style.opacity = "1"
+        document.getElementById("div350").style.visibility = "hidden"
+        document.getElementById("div350").style.display = "none"
+        document.getElementById("div350").style.opacity = "0"
+      }
+      if (currentVal == 340) {
+        document.getElementById("field").innerText = 330
+        var D = 21
+        document.getElementById("div330").style.visibility = "visible"
+        document.getElementById("div330").style.display = "block"
+        document.getElementById("div330").style.opacity = "1"
+        document.getElementById("div340").style.visibility = "hidden"
+        document.getElementById("div340").style.display = "none"
+        document.getElementById("div340").style.opacity = "0"
+      }
+      if (currentVal == 330) {
+        document.getElementById("field").innerText = 320
+        var D = 16
+        document.getElementById("div320").style.visibility = "visible"
+        document.getElementById("div320").style.display = "block"
+        document.getElementById("div320").style.opacity = "1"
+        document.getElementById("div330").style.visibility = "hidden"
+        document.getElementById("div330").style.display = "none"
+        document.getElementById("div330").style.opacity = "0"
+      }
+      if (currentVal == 320) {
+        document.getElementById("field").innerText = 310
+        var D = 26
+        document.getElementById("div310").style.visibility = "visible"
+        document.getElementById("div310").style.display = "block"
+        document.getElementById("div310").style.opacity = "1"
+        document.getElementById("div320").style.visibility = "hidden"
+        document.getElementById("div320").style.display = "none"
+        document.getElementById("div320").style.opacity = "0"
+      }
+      if (currentVal == 310) {
+        document.getElementById("field").innerText = 300
+        var D = 41
+        document.getElementById("div300").style.visibility = "visible"
+        document.getElementById("div300").style.display = "block"
+        document.getElementById("div300").style.opacity = "1"
+        document.getElementById("div310").style.visibility = "hidden"
+        document.getElementById("div310").style.display = "none"
+        document.getElementById("div310").style.opacity = "0"
+      }
+      if (currentVal == 300) {
+        document.getElementById("field").innerText = 290
+        var D = 61
+        document.getElementById("div290").style.visibility = "visible"
+        document.getElementById("div290").style.display = "block"
+        document.getElementById("div290").style.opacity = "1"
+        document.getElementById("div300").style.visibility = "hidden"
+        document.getElementById("div300").style.display = "none"
+        document.getElementById("div300").style.opacity = "0"
+      }
+      if (currentVal == 290) {
+        document.getElementById("field").innerText = 280
+        var D = 21
+        document.getElementById("div280").style.visibility = "visible"
+        document.getElementById("div280").style.display = "block"
+        document.getElementById("div280").style.opacity = "1"
+        document.getElementById("div290").style.visibility = "hidden"
+        document.getElementById("div290").style.display = "none"
+        document.getElementById("div290").style.opacity = "0"
+      }
+      if (currentVal == 280) {
+        document.getElementById("field").innerText = 270
+        var D = 11
+        document.getElementById("div270").style.visibility = "visible"
+        document.getElementById("div270").style.display = "block"
+        document.getElementById("div270").style.opacity = "1"
+        document.getElementById("div280").style.visibility = "hidden"
+        document.getElementById("div280").style.display = "none"
+        document.getElementById("div280").style.opacity = "0"
+      }
+      if (currentVal == 270) {
+        var D = 11
+        Swal.fire({
+                backdrop:false,
+               target: '#rom',
+               position:'center',
+               width:'480px',
+                customClass: {
+                  container: 'position-absolute',
+                  popup:"swal2-popup"
+                },   
+                html:"You've taken all necessary readings for clockwise directions.<br> Now click on '+' button and take it to 0.",
+                icon:'info',
+                });
+       
+      }
+      document.getElementById("volt").innerHTML = D + "mV"
+      d = D
+    }
+
+    var gtemp = "";
+    function reset() {
+      window.location.reload()
+    }
+    function shows()
+    {
+      Swal.fire({
+                        backdrop:false,
+                       target: '#rom',
+                       position:'center',
+                       
+                        customClass: {
+                          container: 'position-absolute',
+                          popup:"swal2-popup"
+                        },
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                          },
+                          hideClass: {
+                            popup: 'animate__animated animate__fadeOut'
+                          },
+                        html: '<div style="font-size:16px;">Setup for recording the Value for gain and plot the radiation pattern for horn antenna</div>',
+                        imageUrl: "images/setup2.jpg",
+                        imageWidth: 450,
+                        imageHeight: 200,
+                        imageAlt: "Setup",
+                        });
+    }
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+
+      ev.dataTransfer.setData("text", ev.target.id);
+      gtemp = ev.target.id + "s"
+
+
+
+    }
+
+    function appear() {
+      document.getElementById("stand").style.visibility = "visible";
+      document.getElementById("images").style.visibility = "visible";
+      document.getElementById("images").style.opacity = "1";
+      document.getElementById("powersupply").style.visibility = "visible";
+      document.getElementById("gg").style.visibility = "visible";
+      document.getElementById("gg").style.opacity = "1";
+      document.getElementById("space").style.visibility = "visible";
+      document.getElementById("exph").style.marginLeft = "243px";
+      document.getElementById("exph").style.width = "1004px";
+      document.getElementById("chartdiv").style.visibility = "visible";
+      document.getElementById("images2").style.visibility = "hidden";
+      document.getElementById("images2").style.opacity = "0";
+      document.getElementById("images2").style.display = "none";
+      document.getElementById("images").style.visibility = "visible";
+      document.getElementById("images").style.opacity = "1";
+      document.getElementById("images").style.display = "block";
+      document.getElementById("div15").style.visibility = "visible";
+    }
+    function next1() {
+      document.getElementById("images").style.visibility = "hidden";
+      document.getElementById("images").style.opacity = "0";
+      document.getElementById("images").style.display = "none";
+      document.getElementById("images2").style.visibility = "visible";
+      document.getElementById("images2").style.opacity = "1";
+      document.getElementById("images2").style.display = "block";
+    }
+    function hov() {
+
+      document.getElementById("container").style.visibility = "visible";
+
+
+    }
+    function hide() {
+
+      document.getElementById("container").style.visibility = "hidden";
+
+    }
+
+    function drop(ev, target) {
+      ev.preventDefault();
+      var da = target;
+
+      if ($(da).children()[0] != undefined) {
+        console.log($(da).children()[0])
+        console.log(ev)
+        document.getElementById('gg').appendChild($(da).children()[0].getData("text/html"))
+      }
+      $(da).empty();
+
+      var data = ev.dataTransfer.getData("text");
+      if (ev.target.id != document.getElementById(data).getAttribute('data-div'))
+  { 
+    Swal.fire({
+                        backdrop:false,
+                       target: '#rom',
+                       position:'center',
+                       width:'480px',
+                        customClass: {
+                          container: 'position-absolute',
+                          popup:"swal2-popup"
+                        },
+                        html:'Incorrect component placement. Please click the <b>\'Experiment setup\'</b> button to view the setup.',
+                        title:'Please try again!!',     
+                        icon:'error',
+                        });
+
+return;
+  }
+      target.appendChild(document.getElementById(data));
+      document.getElementById(gtemp).style.display = "block";
+      if ($("#drag1").parents("#div1").length == 1 && $("#drag4").parents("#div4").length == 1) {
+        document.getElementById("con").style.visibility = "visible";
+        document.getElementById("check11").disabled= false;
+      }
+      var op=data+"s";
+      document.getElementById(op).style.opacity=0.5;
+      document.getElementById(op).draggable=false;
+    }
+
+
+  </script>
+
+  <script>
+    $(function ($) {
+
+      $(".knob").knob({
+        change: function (value) {
+          //console.log("change : " + value);
+        },
+        release: function (value) {
+          //console.log(this.$.attr('value'));
+          console.log("release : " + value);
+        },
+        cancel: function () {
+          console.log("cancel : ", this);
+        },
+        /*format : function (value) {
+            return value + '%';
+        },*/
+        draw: function () {
+
+          // "tron" case
+          if (this.$.data('skin') == 'tron') {
+
+            this.cursorExt = 0.3;
+
+            var a = this.arc(this.cv)  // Arc
+              , pa                   // Previous arc
+              , r = 1;
+
+            this.g.lineWidth = this.lineWidth;
+
+            if (this.o.displayPrevious) {
+              pa = this.arc(this.v);
+              this.g.beginPath();
+              this.g.strokeStyle = this.pColor;
+              this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+              this.g.stroke();
+            }
+
+            this.g.beginPath();
+            this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+            this.g.stroke();
+
+            this.g.lineWidth = 2;
+            this.g.beginPath();
+            this.g.strokeStyle = this.o.fgColor;
+            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+            this.g.stroke();
+
+            return false;
+          }
+        }
+      });
+
+      // Example of infinite knob, iPod click wheel
+      var v, up = 0, down = 0, i = 0
+        , $idir = $("div.idir")
+        , $ival = $("div.ival")
+        , incr = function () { i++; $idir.show().html("+").fadeOut(); $ival.html(i); }
+        , decr = function () { i--; $idir.show().html("-").fadeOut(); $ival.html(i); };
+      $("input.infinite").knob(
+        {
+          min: 0
+          , max: 20
+          , stopper: false
+          , change: function () {
+            if (v > this.cv) {
+              if (up) {
+                decr();
+                up = 0;
+              } else { up = 1; down = 0; }
+            } else {
+              if (v < this.cv) {
+                if (down) {
+                  incr();
+                  down = 0;
+                } else { down = 1; up = 0; }
+              }
+            }
+            v = this.cv;
+          }
+        });
+    });
+  </script>
+</head>
+<link rel="stylesheet" href="css/task7.css">
+
+<body>
+  <div id="box">
+  <div class="mainn">
+    <table>
+
+
+      </tr>
+      <tr>
+
+        <td>
+
+          <div id="exph">
+            <h2 id="expm"> Horn Antenna &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              <button  style="font-family: 'Times New Roman', Times, serif;" ondblclick="hide()" onclick="hov()"
+                id="help">INSTRUCTIONS</button> </h2>
+
+          </div>
+
+
+          <div id="container">
+            <div id="carouselContent" class="carousel" data-interval="false">
+              <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active ">
+                  Click on Components button for components to pop up.
+                </div>
+                <div class="carousel-item ">
+
+                  Click on the component, drag them to the test bench and place them as shown in the experiment setup.
+                </div>
+                <div class="carousel-item ">
+
+                  After placing the components on the test bench, connect the wires accordingly.
+                </div>
+                <div class="carousel-item ">
+
+                  To check your connections click on "Check Connections" button.
+                </div>
+                <div class="carousel-item ">
+
+                  If your connections are correct then you may continue to take down the readings, if not then click on
+                  "Reset Button" and try it again.
+                </div>
+                <div class="carousel-item ">
+
+                  Once you're done with the connections, you'll notice voltage for Horn Antenna at 0 degree on
+                  millivoltmeter.
+                </div>
+                <div class="carousel-item ">
+
+                  Note down that value for Receiving voltage and click on "Calculate" button to calculate gain at that
+                  particular degree.
+                </div>
+                <div class="carousel-item ">
+
+                  Click on Add to table to take down the values of Gain on that particular degree.
+                </div>
+                <div class="carousel-item ">
+
+                  Now click on "+" button and Repeat the process for 10 to 90 degree (for anticlockwise direction) as
+                  you did for the first reading.
+                </div>
+                <div class="carousel-item ">
+
+                  Or click on "-" button and Repeat the process for 360 to 270 degree (for clockwise direction) as you
+                  did for the first reading.
+                </div>
+                <div class="carousel-item ">
+
+                  Note down all the readings for anticlockwise direction (0 to 90 degree) as well as for clockwise
+                  direction (360 to 270 degree).
+                </div>
+
+                <div class="carousel-item ">
+                  Click on "Plot" button to plot a graph as per your readings.
+                </div>
+
+                <div class="carousel-item ">
+                  If you want to save the graph click on the camera icon just above the graph.
+                </div>
+
+                <div class="carousel-item ">
+                  Click on "Print" button to get your page (readings and connections) in a PDF form.
+                </div>
+               
+
+              </div>
+              <a class="carousel-control-prev" href="#carouselContent" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               
+            </a>
+              <a class="carousel-control-next" href="#carouselContent" role="button" data-slide="next">
+
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+              </a>
+
+            </div>
+          </div>
+
+
+
+          <div id="gg" ondragover="allowDrop(event)">
+            <table id="images1">
+              <tr>
+                <td id="headingg1">
+                  <h2 style="margin-bottom: 1px;">
+                    READINGS
+                  </h2>
+
+                </td>
+
+
+              </tr>
+
+              <tr>
+                <td style="padding-left: 4px; ">
+                  <hr style="width: 170px;">
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-left: 10px; ">
+                  Click on Add to table to add on the value for Gain for different Angles.
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-top: 30px; padding-bottom: 20px;">
+                  <div class="tablediv">
+                    <table id="readin">
+                      <tr>
+                        <th>Angle (degree) &nbsp; &nbsp; &nbsp;</th>
+                        <th>Gain (dB) &nbsp; &nbsp; &nbsp;</th>
+                      </tr>
+
+                    </table>
+                  </div>
+                </td>
+
+              </tr>
+
+
+              <tr>
+                <td>
+                  <table>
+                    <tr>
+                    <tr>
+                      <td>
+                      <td id="button">
+                        <button id="addto" onclick="validate()">Add To Table</button>
+                      </td>
+                </td>
+                <td>
+                  <button id="plot" onclick="makePlot()">Plot</button>
+                </td>
+              </tr>
+            </table>
+        </td>
+
+
+      </tr>
+
+      <tr>
+        <td>
+          <table id="readin1">
+
+            <tr>
+              <td>
+                Transmitting Voltage:
+
+              </td>
+              <td id="Trans">
+
+              </td>
+              <td>
+                mV
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Receiving Voltage:
+
+              </td>
+              <td>
+                <input id="V4">
+              </td>
+              <td>
+                mV
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <B> Gain: </B>
+              </td>
+
+            </tr>
+            <tr>
+              <td style="text-align: end;">
+                20log<sub>10</sub>(V<sub>r</sub> / V<sub>t</sub>) =
+              </td>
+              <td id="coupling">
+
+              </td>
+              <td>
+                dB
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-top: 10px; padding-left: 55px;">
+                <button id="cal" onclick="calculate()">Calculate</button>
+              </td>
+
+            </tr>
+          </table>
+        </td>
+
+      </tr>
+
+    </table>
+    <table id="images2">
+      <tr>
+        <td id="comp">
+          <h2 id="headingg" style="margin-bottom: 10px;">
+            COMPONENTS
+          </h2>
+
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-left: 60px;">
+          <hr>
+      </tr>
+      <tr>
+        <td>
+
+          <table id="ctab">
+            <tr>
+              <td style="padding-left: 30px;">
+                <img id="drag6" src="images/rotating.png" draggable="true" ondragstart="drag(event)" width="80"
+                  height="88" data-div="div6">
+                <img id="drag6s" src="images/rotating.png" height="88" width="80" style="display: none;">
+              </td>
+            </tr>
+            <tr>
+              <td class="imgr">
+                Receiving Antenna
+              </td>
+            </tr>
+
+
+
+            <tr>
+              <td style="padding-left: 20px; padding-top: 5px; padding-bottom: 5px;">
+                <img id="drag4" src="images/detector.png" draggable="true" ondragstart="drag(event)" width="80"
+                  height="35" data-div="div4">
+                <img id="drag4s" src="images/detector.png" height="35" width="80" style="display: none;">
+              </td>
+            </tr>
+            <tr>
+              <td class="imgr">
+                Detector Mount
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding-left: 40px;padding-top: 20px;">
+                <img id="drag10" src="images/fixedhorn.png" draggable="true" ondragstart="drag(event)" width="90"
+                  height="50" data-div="div10">
+                <img id="drag10s" src="images/fixedhorn.png" height="50" width="90" style="display: none;">
+              </td>
+            </tr>
+
+            <tr>
+              <td class="imgr">
+                Transmitting Antenna
+              </td>
+            </tr>
+
+
+          </table>
+
+      </tr>
+
+    </table>
+
+    <table id="images">
+      <tr>
+        <td id="headingg">
+          <h2>
+            COMPONENTS
+          </h2>
+          <hr>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <table id="ctab">
+            <tr>
+
+              <td>
+                <img id="drag2" src="images/isolator.png" draggable="true" ondragstart="drag(event)" width="80"
+                  height="60" data-div="div2">
+                <img id="drag2s" src="images/isolator.png" width="80" style="display: none;">
+              </td>
+            </tr>
+            <tr>
+              <td class="imgr">
+                Isolator
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 30px;">
+                <img id="drag3" src="images/attenuator.png" draggable="true" ondragstart="drag(event)" width="70"
+                  height="70" data-div="div3">
+                <img id="drag3s" src="images/attenuator.png" width="60" style="display: none;">
+              </td>
+            </tr>
+            <tr>
+              <td class="imgr">
+                Attenuator
+              </td>
+            </tr>
+
+
+            <tr>
+              <td style="padding-bottom: 3px;padding-top: 5px;">
+                <img id="drag1" src="images/klystron mount.png" draggable="true" ondragstart="drag(event)"
+                  width="110" height="70" data-div="div1">
+                <img id="drag1s" src="images/klystron mount.png" width="110" style="display: none;">
+              </td>
+            </tr>
+            <tr>
+              <td class="imgr">
+                Klystron Mount
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 40px;">
+                <img id="drag8" src="images/frequency.png" draggable="true" ondragstart="drag(event)" width="40"
+                  height="60" data-div="div8">
+                <img id="drag8s" src="images/frequency.png" width="30" style="display: none;">
+              </td>
+            </tr>
+            <tr>
+              <td class="imgr">
+                Frequency Meter
+              </td>
+            </tr>
+
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+
+
+
+
+
+  <div id="exp">
+
+
+    <table id="lab">
+
+      <tr>
+        <td>
+
+
+          <div id="div1" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+          <div id="div9" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+          <div id="div2" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+          <div id="div3" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+          <div id="div8" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+          <div id="div6" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+          <div id="div4" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+          <div id="div10" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+          <div id="div15">
+            <img id="stand2" src="images/stand2.png" width="100" height="70">
+          </div>
+          <div id="div16">
+
+
+            <div class="input-group">
+              <input style="display: inline-block;" type="button" value="-" onclick="decrementValue()"
+                class="button-minus" data-field="quantity">
+              <div style="display: inline-block;" name="quantity" class="quantity-field" id="field">0</div>
+              <input style="display: inline-block;" type="button" value="+" onclick="incrementValue()"
+                class="button-plus" data-field="quantity"> degree
+            </div>
+          </div>
+          <div id="con" class="jtk-demo-main">
+            <!-- demo -->
+            <div class="jtk-demo-canvas canvas-wide animation-demo jtk-surface jtk-surface-nopan" id="canvas">
+              <div class="littledot" id="ld1"><label style="position:absolute;top:-22px;left: -1em;">A</label></div>
+              <div class="littledot" id="ld2">B </div>
+              <div class="littledot" id="ld4">D </div>
+              <div class="littledot" id="ld5">E </div>
+
+
+
+            </div>
+
+          </div>
+          <img id="div110" src="images/10.png">
+          <img id="div120" src="images/20.png">
+          <img id="div130" src="images/30.png">
+          <img id="div140" src="images/40.png">
+          <img id="div150" src="images/50.png">
+          <img id="div160" src="images/60.png">
+          <img id="div170" src="images/70.png">
+          <img id="div180" src="images/80.png">
+          <img id="div190" src="images/90.png">
+          <img id="div360" src="images/360 (1).png">
+          <img id="div350" src="images/360 (2).png">
+          <img id="div340" src="images/360 (3).png">
+          <img id="div330" src="images/360 (4).png">
+          <img id="div320" src="images/360 (5).png">
+          <img id="div310" src="images/360 (6).png">
+          <img id="div300" src="images/360 (7).png">
+          <img id="div290" src="images/360 (7).png">
+          <img id="div280" src="images/360 (8).png">
+          <img id="div270" src="images/360 (9).png">
+
+          <div id="stand">
+
+            <img id="block1" src="images/block4.jpg">
+            <img id="block2" src="images/block4.jpg">
+
+            <img id="block4" src="images/block4.jpg">
+            <img id="block3" src="images/block4.jpg">
+            <img id="block5" src="images/block4.jpg">
+
+            <img id="drag0" src="images/stand.png" width="580">
+          </div>
+          <div id="table55">
+
+
+
+            <img id="aa" src="images/table.png " width="1000" height="100">
+          </div>
+          <h4 id="vv">
+            To Record the Value for Gain and Plot the Radiation Pattern for Horn Antenna
+          </h4>
+          <div id="space">
+
+
+            <img id="croi" src="images/millivoltmeter.png">
+            <h4 id="volt">
+              + &nbsp; mV &nbsp; -
+            </h4>
+          </div>
+
+
+          <div id="chartdiv"></div>
+          <div id="powersupply">
+
+            <table>
+
+
+              <tr>
+
+
+                <h2 class="heading5">Klystron power supply</h2>
+              </tr>
+              <tr>
+
+                <div class="exampleContainer exampleInput">
+                  <div id="aaaa" data-bind="sevenSeg: {digits: 6, value:testValue2 }"></div>
+                </div>
+
+
+
+
+
+
+              </tr>
+
+
+              <tr>
+                <h6 id="name"> Beam Voltage</h6>
+                <label class="switch">
+
+                  <input type="checkbox" onclick="myFunction()" id="cch">
+
+                  <span class="slider round"> </span>
+
+
+              </tr>
+
+              <tr class="mainknob">
+                <td></td>
+                <td id="voltage">
+
+                  <h4 class="heading4">Beam Voltage</h4>
+
+
+                  <div id="jog_dial_one">
+
+                  </div>
+
+
+                  <div id="jog_dial_one_meter_inner1"></div>
+
+
+                </td>
+
+                <td id="voltage">
+
+                  <h4 class="heading4">Reflector Voltage</h4>
+
+
+                  <div id="jog_dial_two"></div>
+
+                  <div id="jog_dial_two_meter_inner1"></div>
+                </td>
+              </tr>
+              <tr>
+                <td id="voltage1">
+
+
+                  <h5 class="heading4">Amplitude</h5>
+
+                  <div id="jog_dial_3"></div>
+
+                  <div id="jog_dial_3_meter_inner1"></div>
+
+                </td>
+                <td id="voltage1">
+
+                  <h5 class="heading4">Frequency</h5>
+
+                  <div id="jog_dial_4"></div>
+
+                  <div id="jog_dial_4_meter_inner1"></div>
+
+                </td>
+
+
+                <td id="voltage1">
+                  <h5 class="heading4">Amplitude</h5>
+
+                  <div id="jog_dial_5"></div>
+
+                  <div id="jog_dial_5_meter_inner1"></div>
+
+                </td>
+                <td id="voltage1">
+                  <h5 class="heading4">Frequency</h5>
+
+                  <div id="jog_dial_6"></div>
+
+                  <div id="jog_dial_6_meter_inner1"></div>
+                </td>
+              </tr>
+            </table>
+
+
+          </div>
+        </td>
+      </tr>
+
+      <div id="rom">
+        <img id="rom1" src="images/empty-room-with-white-brick-walls-studio_107791-1349.jpg"
+          style="max-width: 1000;">
+      </div>
+
+    </table>
+    <div id="but">
+      <button id="check" onclick="appear()">Components</button>
+      <button id="next1" onclick="next1()"> More Components</button>
+      <button id="check11" disabled>Check Connections</button>
+      <button id="manual"  onclick="shows()">Experiment setup</button>
+      <input type="button" onclick="window.location.href='images/Readings for radiation pattern.pdf';" id="print" value="Print" disabled/>
+      <button id="reset" onclick="reset()">Reset</button>
+    </div>
+    <div id="prop" style="position: relative; top:70px; left:100px; ">
+
+
+      <table border="2px" style=" visibility: none;">
+
+        <tr> <input value="0" id="P1" onclick="cal()">&nbsp;<output></output></td>
+        </tr>
+
+
+        <tr><input value="9.4" id="P2" onclick="cal()">
+          &nbsp; <output></output>&nbsp;GHz</td>
+        </tr>
+
+
+        <tr>
+          <td> <input value="90" id="P3" onclick="cal()">
+            &nbsp; <output></output><sup>o</sup></td>
+        </tr>
+
+
+      </table>
+
+      <div>
+
+      </div>
+
+
+      </tr>
+
+      </table>
+    </div>
+
+    <div id="graph">
+      <div id="graph1">
+
+        <div id="myDiv" height="70%" width="70%">
+
+        </div>
+        <button id="close" onclick="close1()">
+          Close
+        </button>
+        <button  id="watermark1"><b>© Virtual Labs IIT Roorkee</b></button>
+      </div>
+    </div></div>
+
+    <footer class="main-footer">
+      <div align="center" style="font-size: 20px;font-weight: bold;">© 2023 Virtual Labs, IIT Roorkee</div>
+    </footer>
+
+</body>
+
+
+
+
+
+<script src="js/jquery.knob.js"></script>
+<script src="js/jsplumb1.js"></script>
+<!-- /JS -->
+
+<!--  demo code -->
+<script src="js/demo1.js"></script>
+
+</html>

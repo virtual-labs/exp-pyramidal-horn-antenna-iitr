@@ -1,0 +1,7 @@
+[{"question":"In satellite communication, highly directional antennas are used to","answers":{"a":"direct the spot beam to a particular region of space on Earth","b":"strengthen the beam to overcome the cosmic noise","c":"make corrections in change of polarization of the beam","d":"select a particular channel in transmission and reception"},"correctAnswer":"a"},
+{"question":"_________ of an antenna is a plot of the magnitude of the far field strength versus position around the antenna.","answers":{"a":"Radiation pattern","b":"Directivity","c":"Beam width","d":"None of these"},"correctAnswer":"a"},
+{"question":"_______ of an antenna is a measure of how the antenna concentrates its radiated power in a given direction.","answers":{"a":"Efficiency","b":"Power","c":"Gain","d":"Polarization"},"correctAnswer":"b"},
+{"question":"An antenna when radiating, has a highly directional radiation pattern. When the antenna is receiving its radiation pattern","answers":{"a":"Is more directive","b":"Is less directive","c":"Is the same","d":"Exhibits no directivity all"},"correctAnswer":"c"},
+{"question":"If an antenna has a directivity of 16 and radiation efficiency of 0.9, then the gain of the antenna is:","answers":{"a":"14.4","b":"14.8","c":"17.8","d":"19.3"},"correctAnswer":"a"}]
+
+
