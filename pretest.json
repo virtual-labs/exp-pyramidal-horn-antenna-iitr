@@ -1,0 +1,5 @@
+[{"question":"Antennas are bidirectional devices.","answers":{"a":"True","b":"False"},"correctAnswer":"a"},
+{"question":"A __________ is a device that converts a guided electromagnetic wave on a transmission line into a plane wave propagating in free space.","answers":{"a":"Transmitting antenna","b":"Receiving antenna","c":"Radar","d":"Mixer"},"correctAnswer":"a"},
+{"question":"Gain of an antenna is always greater than the directivity of the antenna.","answers":{"a":"True","b":"False"},"correctAnswer":"b"},
+{"question":"How will you increase the gain of an antenna?","answers":{"a":"By adding several antennas in parallel","b":"By focusing the radiated energy in one desired direction","c":"By making antenna rods thicker","d":"By making the antenna size larger"},"correctAnswer":"b"},
+{"question":"Beamwidth and directivity are both measures of the focusing ability of an antenna.","answers":{"a":"True","b":"False"},"correctAnswer":"a"}]
