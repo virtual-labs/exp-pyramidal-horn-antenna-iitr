@@ -9,24 +9,18 @@ B   False
 <br>
 
 
-Q2. _____ of an antenna is a measure of how the antenna concentrates its radiated power in a given direction.<br>
+Q2. A _______________is a device that converts a guided electromagnetic wave on a transmission line into a plane wave propagating in free space.<br>
+  
+<b>A   Transmitting antenna</b>    
+B   Receiving antenna  
+C   Radar  
+D   Mixer    
+<br> 
 
-A   Efficiency  
-B   Power  
-<b>C   Gain</b>   
-D   Polarization  
-<br>
+Q3. Gain of an antenna is always greater than the directivity of the antenna.<br>
 
-
-Q3. An antenna when radiating, has a highly directional radiation pattern. When the antenna is receiving its radiation pattern
-<br>
-
-A   Is more directive   
-B   Is less directive   
-<b>C   Is the same</b>  
-D   Exhibits no directivity all  
-<br>  
-
+A   True    
+<b>B   False</b>   
 
 Q4. How will you increase the gain of an antenna?<br>
   
