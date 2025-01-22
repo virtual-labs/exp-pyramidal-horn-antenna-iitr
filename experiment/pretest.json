@@ -1,5 +1,0 @@
-[{"question":"Antennas are bidirectional devices.","answers":{"a":"True","b":"False"},"correctAnswer":"a"},
-{"question":"_______ of an antenna is a measure of how the antenna concentrates its radiated power in a given direction.","answers":{"a":"Efficiency","b":"Power","c":"Gain","d":"Polarization"},"correctAnswer":"c"},
-{"question":"An antenna when radiating, has a highly directional radiation pattern. When the antenna is receiving its radiation pattern","answers":{"a":"Is more directive","b":"Is less directive","c":"Is the same","d":"Exhibits no directivity all"},"correctAnswer":"c"},
-{"question":"How will you increase the gain of an antenna?","answers":{"a":"By adding several antennas in parallel","b":"By focusing the radiated energy in one desired direction","c":"By making antenna rods thicker","d":"By making the antenna size larger"},"correctAnswer":"b"},
-{"question":"Beamwidth and directivity are both measures of the focusing ability of an antenna.","answers":{"a":"True","b":"False"},"correctAnswer":"a"}]
